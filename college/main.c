@@ -4,6 +4,7 @@
 #include<string.h>
 #include"mydata.h"
 extern void readfromtxt();  
+extern void showFillWish(int key);
 void main()
 {
 	//writetofile();
@@ -13,5 +14,6 @@ void main()
 	//show();
 	//readschoolinfo();
 	//CheckEnrollmentSuccess();
-	readfromtxt();
+	//readfromtxt();
+	showFillWish(2);
 }

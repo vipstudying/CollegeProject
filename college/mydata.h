@@ -2,7 +2,7 @@
 struct t_student
 {
 	int nOrder;
-	char stu_name[30];
+	char stu_name[7];
 	short int sAryScore[5];
 };
 struct school
