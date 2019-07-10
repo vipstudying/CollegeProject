@@ -33,7 +33,6 @@ void getschool()
 {
 	int i=0;
 	k col[100]={0};
-	srand(time(NULL));
 	for(i=0;i<100;i++)
 	{
 		creat_list(col, i);

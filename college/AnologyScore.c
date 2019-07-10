@@ -51,7 +51,7 @@ void writetofile()
 		printf("file cant open!");
 		exit(0);
 	}
-	srand(time(NULL));
+	
 	for (i = 0;i< N;++i)
 	{		
 		anologyscore(nAryScore);

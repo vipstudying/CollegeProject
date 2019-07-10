@@ -1,4 +1,4 @@
-#define N  3400
+#define N  34000
 struct t_student
 {
 	int nOrder;
@@ -8,7 +8,7 @@ struct t_student
 struct school
 {
 	short int schoolname;
-	short int volunteer[6];
+	int volunteer[6];
 	short int enrollmentnum[6];
 };
 
@@ -17,13 +17,13 @@ struct volunteer
    struct t_student stu;
    struct school sch[6];
    short int schoolname;
-   short int volun;
+   int volun;
 };
 
 struct major
 {
 	char majname[17][50];
-	short int majnumber[17];
+	int majnumber[17];
 	short int majquota[17];
 };
 struct college//遗漏了typedef，提示第一行miss ;

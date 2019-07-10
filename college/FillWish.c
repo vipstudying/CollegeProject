@@ -26,7 +26,7 @@ void writetoshoolnum(int key,int major)
 	struct college onedata={0};	
 	int i = 0;
 	key = key%10000;
-	major = major%1000000;
+	//major = major%1000000;
 	college_list = fopen("C:\\college_list.txt","rb+");
 	fseek(college_list,key*sizeof(onedata),SEEK_SET);
 	fread (&onedata ,sizeof(onedata), 1 ,college_list);
@@ -58,7 +58,7 @@ void getoneschooldata(struct school *scl,struct college* coll)
 	int a[17] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
 	int b[6] ={0};
 	scl->schoolname = coll->number;
-	srand(time(NULL));
+
 	for(i=0; i<6; i++)
 	{
 		post=rand()%(17-i);
@@ -85,28 +85,24 @@ void readfromtxt()
 	struct volunteer vol = {0};
 	struct college coll = {0};
 	int nCount = 0;
-	int b[6]={0};
+	int b[6] = {0};
 	int a[100] = {0};
 	int post = 0;
 	FILE * fileobj = NULL;
 	FILE * volun = NULL;
 	FILE * sortedFile = NULL;
     fileobj = fopen("C:\\studentscore_sort.txt","r");
+	
 	if(fileobj == NULL)
 	{
 		printf("can't open file!");
 		exit(0);
 	}
-	for(k=0;k<10;k++)
+	for(k=0;k<10000;k++)
 	{
 		fscanf(fileobj,"%d%s%d%d%d%d%d",&t.nOrder,t.stu_name,&t.sAryScore[0],\
 				                    &t.sAryScore[1],&t.sAryScore[2],
 									&t.sAryScore[3],&t.sAryScore[4]);
-		printf("%d%s%d%d%d%d%d\n",t.nOrder,t.stu_name,t.sAryScore[0],\
-				                    t.sAryScore[1],t.sAryScore[2],
-									t.sAryScore[3],t.sAryScore[4]);
-		
-		coll = getschooldata(i);
 		
 		volun = fopen("C:\\studentscore_all.txt","ab+");
 		if(volun == NULL)
@@ -114,11 +110,12 @@ void readfromtxt()
 			printf("can't open file!");
 			exit(0);
 		}
-		for(i = 0;i<100;i++);
+		for(i=0;i<100;i++)
 		{
-			a[i]=i;
+			//printf("%d\n",i);
+			a[i] = i;
 		}
-        for(i=0; i<6; i++)
+		for(i=0; i<6; i++)
 		{
 			post=rand()%(100-i);
 			b[i]=a[post];
@@ -133,6 +130,16 @@ void readfromtxt()
 			getoneschooldata(&scl,&coll);
 			vol.sch[i] = scl;
 		}
+        vol.stu = t;
+		printf("------------------------------------------------------------------------\n");
+		printf("%d%s%d%d%d%d%d\n",vol.stu.nOrder,vol.stu.stu_name,vol.stu.sAryScore[0],\
+				                    vol.stu.sAryScore[1],vol.stu.sAryScore[2],
+									vol.stu.sAryScore[3],vol.stu.sAryScore[4]);
+		for(i=0;i<6;i++)
+		{
+              printf("%d %d %d\n",vol.sch[i].schoolname,vol.sch[i].volunteer[0],vol.sch[i].enrollmentnum[0]);
+		}
+		printf("-----------------------------------------------------------------------\n");
 		fwrite(&vol,sizeof(vol),1,volun);
 	    fclose(volun);	
 	}
